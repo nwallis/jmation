@@ -1,0 +1,42 @@
+<head>
+  <title>jmation</title>
+</head>
+
+<body>
+  <section id="jmation_header">
+    {{> loginButtons}}
+  </section>
+  <section id="jmation_app">
+    <section>
+      {{> video_capture }}
+      {{> published_animations}}
+    </section>
+    <section id="jmation_timeline">
+      {{> timeline }}
+    </section>
+  </section>
+</body>
+
+<template name="video_capture">
+  <canvas id="live_video_canvas">
+  </canvas>
+  <video autoplay="true" id="live_video">
+  </video>
+  <nav>
+    <input type="button" value="Capture Frame" id="capture_button"/>
+    <input type="button" value="Publish" id="publish_button"/>
+  </nav>
+</template>
+
+<template name="timeline">
+  <nav id="timeline_container">
+  </nav>
+</template>
+
+<template name="published_animations">
+  <nav id="published_animations_container">
+    {{#each animations}}
+      <video class="{{css_class}} " width="100" src="http://jmation-uploads.s3-ap-southeast-2.amazonaws.com/videos/{{file_name}}.webv"></video>
+    {{/each}}
+  </nav>
+</template>
